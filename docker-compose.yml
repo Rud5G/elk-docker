@@ -6,9 +6,19 @@
 # Run with:
 # docker-compose up
 
-elk:
-  build: .
-  ports:
-    - "5601:5601"
-    - "9200:9200"
-    - "5044:5044"
+## original image: sebp/elk
+
+version: '3.2'
+services:
+  elk:
+    build: .
+    volumes:
+      - elk-data:/var/lib/elasticsearch
+    ports:
+      - "5601:5601"
+      - "9200:9200"
+      - "5044:5044"
+
+
+volumes:
+  elk-data:
